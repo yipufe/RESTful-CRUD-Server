@@ -1,23 +1,33 @@
 // import { getDb } from '../util/database'
-import { getDb } from '../util/database'
+import { getDb, mongoConnect } from '../util/database'
 //const getDb = _getDb
-
-const products = []
+//const mongodb = require('mongodb')
+import mongodb from 'mongodb'
 
 export default class Product {
-    constructor(itemCode, name, price, description, imageUrl) {
+    constructor(itemCode, name, price, description, imageUrl, id) {
         this.itemCode = itemCode
         this.name = name
         this.price = price
         this.description = description
         this.imageUrl = imageUrl
+        this._id = id
     }
 
     save() {
-        products.push(this)
-
-
         const db = getDb();
+        let databaseOp
+
+        if(this._id) {
+            databaseOp = db.collection('products')
+                .updateOne(
+                    {_id: new mongodb.ObjectId(this._id)},
+                    { $set: this })
+        } else {
+            databaseOp = db.collection('products')
+                .insertOne(this)
+        }
+
         return db
             .collection('products')
             .insertOne(this)
@@ -42,7 +52,17 @@ export default class Product {
             .catch(err => {
                 console.log(err)
             })
+    }
 
-        return products
+    static deleteById(id) {
+        const db = getDb()
+        return db.collection('products')
+            .deleteOne({_id: new mongodb.ObjectID(id)})
+            .then(result => {
+                console.log('Delete')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
