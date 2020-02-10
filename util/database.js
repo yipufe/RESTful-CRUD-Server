@@ -1,10 +1,11 @@
 import mongodb from 'mongodb'
-const MongoClient = mongodb.MongoClient
+//const MongoClient = mongodb.MongoClient
 
-let _db
+//let _db
 
 //Username: thatoneguy
 //Password: 12345xyz
+/*
 export const mongoConnect = (callback) => {
     MongoClient.connect('mongodb+srv://thatoneguy:12345xyz@dgm-cluster-fu5qw.mongodb.net/test?retryWrites=true&w=majority')
         .then(client => {
@@ -16,10 +17,11 @@ export const mongoConnect = (callback) => {
             throw err
         })
 }
-
+*/
+/*
 export const getDb = () => {
     if(_db) {
         return _db
     }
     throw 'No database found!'
-}
+}*/
