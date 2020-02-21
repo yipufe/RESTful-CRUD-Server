@@ -42,11 +42,14 @@ http://64.227.50.137:5000/products
 ```
 With the following in the body
 
-itemCode - String
-bottleType - String
-price - Number
-description - String
-imageUrl - String
+name | Type | Example
+--- | --- | ---
+itemCode | String | 03441
+bottleType | String | Water Bottle
+price | Number | 0.99
+description | String | A bottle of water
+imageUrl | String | https://some.image.com/waterbottle.jpg
+
 
 #### Create a bundle
 
@@ -56,14 +59,17 @@ to create a product bundle POST to:
 http://64.227.50.137:5000/bundles
 ```
 with the following in the body
-bundle - String (<product id>,<product id>,...)
-price - Number
-description - String
-imageUrl - String
+
+name | Type | Example
+--- | --- | ---
+bundle | String | (id,id,...)
+price | Number | 29.99
+description | String | A collection of bottles
+imageUrl | String | https://some.image.com/bundleofbottles.jpg
 
 ### PUT
 
-Update a product with a PUT request using the product id set in the url
+Update a product with a PUT request using the product id (ex: 5e4f164c823a6632280b7894) set in the url
 
 ```
 http://64.227.50.137:5000/products/<id>
@@ -71,11 +77,13 @@ http://64.227.50.137:5000/products/<id>
 
 With the following in the body
 
-itemCode - String
-bottleType - String
-price - Number
-description - String
-imageUrl - String
+name | Type | Example
+--- | --- | ---
+itemCode | String | 03443
+bottleType | String | Water Bottle
+price | Number | 0.98
+description | String | A bottle of water
+imageUrl | String | https://some.image.com/waterbottle.jpg
 
 ### DELETE
 
@@ -84,6 +92,3 @@ To delete a product use the DELETE method on
 http://64.227.50.137:5000/products/<id>
 ```
 Using the product id in the url
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
