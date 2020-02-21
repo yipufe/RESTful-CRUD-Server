@@ -62,7 +62,7 @@ with the following in the body
 
 name | Type | Example
 --- | --- | ---
-bundle | String | (id,id,...)
+bundle | String | id,id,...
 price | Number | 29.99
 description | String | A collection of bottles
 imageUrl | String | https://some.image.com/bundleofbottles.jpg
