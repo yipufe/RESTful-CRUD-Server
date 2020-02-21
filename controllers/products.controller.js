@@ -1,7 +1,26 @@
 import { join } from 'path'
 
 import Product from '../models/product.model'
+import Bundle from '../models/bundle.model'
 import mongodb from 'mongodb'
+
+export const postAddBundle = (req, res, next)=>{
+    const bundle = new Bundle({
+        bundle: req.body.bundle,
+        price: req.body.price,
+        description: req.body.description,
+        imageUrl: req.body.imageUrl})
+    bundle.save()
+        .then(result => {
+            console.log('Created Bundle')
+            res.status(201).json({message: 'Created Bundle! Check your DB'})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    //res.sendFile(join(__dirname, '../', 'views', 'products.html'))
+}
+
 
 export const postAddProduct = (req, res, next)=>{
     const product = new Product({
@@ -13,7 +32,7 @@ export const postAddProduct = (req, res, next)=>{
     product.save()
         .then(result => {
             console.log('Created Product')
-            res.send('Created Product! Check your DB')
+            res.status(201).json({message: 'Created Product! Check your DB'})
         })
         .catch(err => {
             res.send(err)
@@ -21,27 +40,54 @@ export const postAddProduct = (req, res, next)=>{
     //res.sendFile(join(__dirname, '../', 'views', 'products.html'))
 }
 
+export const getProduct = (req, res, next) => {
+    const prodId = req.params.prodId
+    Product.findById(prodId)
+        .then(product => {
+            res.json(product)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+
 export const putUpdateProduct = (req, res, next) => {
-    const product = new Product(
-        req.body.itemCode, 
-        req.body.name,
-        req.body.price,
-        req.body.description,
-        req.body.imageUrl,
-        new mongodb.ObjectId( req.body.id )
-    )
-    product.save()
+    const prodId = req.params.prodId
+    console.log("PUT:",prodId)
+    Product.findById(prodId)
+        .then(product => {
+            product.bottleType = req.body.bottleType
+            product.itemCode = req.body.itemCode
+            product.price = req.body.price
+            product.description = req.body.description
+            product.imageUrl = req.body.imageUrl
+            return product.save()
+        })
         .then(result => {
             console.log("Update Product")
-            res.send('Updated Product! Check your DB')
+            res.redirect('/')
+//            res.send('Updated Product! Check your DB')
         })
+    
+    // const product = new Product({
+    //     bottleType: req.body.bottleType,
+    //     itemCode: req.body.itemCode,
+    //     price: req.body.price,
+    //     description: req.body.description,
+    //     imageUrl: req.body.imageUrl
+    // })
+    // product.save()
+    //     .then(result => {
+    //         console.log("Update Product")
+    //     })
 }
 
 export const deleteProduct = (req, res, next) => {
     const prodId = req.params.prodId
     console.log(prodId)
 
-    Product.deleteById(prodId)
+    Product.findByIdAndRemove(prodId)
         .then(() => {
             console.log('Product Deleted')
             res.redirect('/')
@@ -51,8 +97,18 @@ export const deleteProduct = (req, res, next) => {
         })
 }
 
+export const getBundles = (req, res, next)=>{
+    Bundle.find()
+        .then(bundles => {
+            res.json(bundles)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 export const getProducts = (req, res, next)=>{
-    Product.fetchAll()
+    Product.find()
         .then(products => {
             res.json(products)
         })
