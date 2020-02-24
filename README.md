@@ -1,5 +1,7 @@
 # RESTful CRUD Server
 
+This RESTful API is for bottles of all types listed as products
+
 ## Project setup
 ```
 npm install
@@ -10,7 +12,7 @@ npm install
 npm start
 ```
 
-### GET
+### GET Requests
 
 #### GET all products
 ```
@@ -37,7 +39,7 @@ http://64.227.50.137:5000/bundle/<id>
 This will output a single bundle as JSON by the id provided in the url.
 
 
-### POST
+### POST Requests
 
 #### Create a Product
 
@@ -73,7 +75,7 @@ price | Number | 29.99
 description | String | A collection of bottles
 imageUrl | String | https://some.image.com/bundleofbottles.jpg
 
-### PUT
+### PUT Requests
 
 Update a product with a PUT request using the product id (ex: 5e4f164c823a6632280b7894) set in the url
 
@@ -91,7 +93,7 @@ price | Number | 0.98
 description | String | A bottle of water
 imageUrl | String | https://some.image.com/waterbottle.jpg
 
-### DELETE
+### DELETE Requests
 
 To delete a product use the DELETE method on
 ```
