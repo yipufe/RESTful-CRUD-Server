@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema
 
+//Bundle schema for mongoose
 const bundleSchema = new Schema({
     bundle: {
         type: String,

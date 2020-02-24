@@ -30,6 +30,12 @@ http://64.227.50.137:5000/bundles
 ```
 This will output all product bundles as JSON
 
+#### GET bundle by id
+```
+http://64.227.50.137:5000/bundle/<id>
+```
+This will output a single bundle as JSON by the id provided in the url.
+
 
 ### POST
 

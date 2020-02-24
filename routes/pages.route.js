@@ -1,6 +1,6 @@
 import { Router } from 'express'
 const router = Router()
-import {getMain, postAddProduct, postAddBundle, getBundles, getProduct, getProducts, putUpdateProduct, deleteProduct} from '../controllers/products.controller'
+import {getMain, postAddProduct, postAddBundle, getBundles, getBundle, getProduct, getProducts, putUpdateProduct, deleteProduct} from '../controllers/products.controller'
 
 //Serve index page
 router.get('/', getMain)
@@ -15,6 +15,8 @@ router.get('/products', getProducts)
 router.get('/bundles', getBundles)
 //get product by id
 router.get('/product/:prodId', getProduct)
+//get bundle by id
+router.get('/bundle/:bundleId', getBundle)
 //Modify product
 router.put('/products/:prodId', putUpdateProduct)
 //Delete product
