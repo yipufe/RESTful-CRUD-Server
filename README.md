@@ -16,25 +16,25 @@ npm start
 
 #### GET all products
 ```
-http://64.227.50.137:5000/products
+http://67.205.184.19:5000/products
 ```
 This will output JSON of all products in the database
 
 #### GET product by id
 ```
-http://64.227.50.137:5000/product/<id>
+http://67.205.184.19:5000/product/<id>
 ```
 This will output a single product as JSON by the id provided in the url.
 
 #### GET all bundles
 ```
-http://64.227.50.137:5000/bundles
+http://67.205.184.19:5000/bundles
 ```
 This will output all product bundles as JSON
 
 #### GET bundle by id
 ```
-http://64.227.50.137:5000/bundle/<id>
+http://67.205.184.19:5000/bundle/<id>
 ```
 This will output a single bundle as JSON by the id provided in the url.
 
@@ -46,7 +46,7 @@ This will output a single bundle as JSON by the id provided in the url.
 To create a product POST to:
 
 ```
-http://64.227.50.137:5000/products
+http://67.205.184.19:5000/products
 ```
 With the following in the body
 
@@ -64,7 +64,7 @@ imageUrl | String | https://some.image.com/waterbottle.jpg
 to create a product bundle POST to:
 
 ```
-http://64.227.50.137:5000/bundles
+http://67.205.184.19:5000/bundles
 ```
 with the following in the body
 
@@ -80,7 +80,7 @@ imageUrl | String | https://some.image.com/bundleofbottles.jpg
 Update a product with a PUT request using the product id (ex: 5e4f164c823a6632280b7894) set in the url
 
 ```
-http://64.227.50.137:5000/products/<id>
+http://67.205.184.19:5000/products/<id>
 ```
 
 With the following in the body
@@ -97,6 +97,6 @@ imageUrl | String | https://some.image.com/waterbottle.jpg
 
 To delete a product use the DELETE method on
 ```
-http://64.227.50.137:5000/products/<id>
+http://67.205.184.19:5000/products/<id>
 ```
 Using the product id in the url
